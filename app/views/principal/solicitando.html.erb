@@ -1,0 +1,39 @@
+<h1>Resultados del Sistema SCADA</h1>
+<hr>
+
+<%= form_tag do %>
+	<%= label_tag(:codigo,"Codigo:") %>
+	<br>
+	<%= text_field_tag(:codigo,@codigo,:readonly => true)%>
+	<p></p>
+	<%= label_tag(:hora,"Hora de Procesamiento:")%>
+	<br>
+	<%= text_field_tag(:codigo,@tiempo,:readonly => true)%>
+
+
+<% end %>
+<hr>
+<h2>Mensajes:</h2>
+
+<% var=false %>
+
+<% if @salud_presion.eql?("Rojo") %>
+	<p>* Presión en Rojo,Informar urgentemente a Operaciones.</p>
+	<% var=true %>
+<% end %>
+
+<% if @salud_temperatura.eql?("Mucho_Calor") %>
+	<p>* Temperatura en Mucho Calor, informar urgentemente a Bomberos.</p>
+	<% var=true %>
+<%end %>
+
+<%if @salud_presion.eql?("Verde") and @salud_temperatura.eql?("Calido") 
+	 %>
+	 <p>* Presión en Verde y Temperatura Cálido, Sistemas OK</p>
+	 <% var=true %>
+<% end %>
+<% if var==false %>
+	<p>* Alerta valores en rango de Advertencia </p>
+<% end %>
+
+<%= link_to "Inicio" , :action=> "index" %>

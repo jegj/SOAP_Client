@@ -1,0 +1,21 @@
+<h1>SCADA</h1>
+<h3>Validcion del status de los datos del Sistema SCADA</h3>
+<% if flash[:error] %>
+	<p style='color:red;'>Error: <%=flash[:error]%></p>
+<% end %>
+<hr>
+<%= form_tag ({:action=>"solicitando"}) do %>
+	<%= label_tag(:codigo,"Codigo:") %>
+	<br>
+	<%= text_field_tag(:codigo)%>
+	<p></p>
+	<%= label_tag(:presion,"Presion:") %>
+	<br>
+	<%= text_field_tag(:presion)%>
+	<p></p>
+	<%= label_tag(:temperatura,"Temperatura:") %>
+	<br>
+	<%= text_field_tag(:temperatura)%>
+	<p></p>
+	<%= submit_tag  "Solicitar"%>
+<% end %>
